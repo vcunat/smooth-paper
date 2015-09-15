@@ -14,6 +14,10 @@
 \end_preamble
 \use_default_options true
 \master root.lyx
+\begin_modules
+theorems-ams
+theorems-ams-extended
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -173,6 +177,165 @@ discuss comparison to previous work, condemn the smoothness model, etc.
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Definitions (stub)
+\end_layout
+
+\begin_layout Standard
+The predecessor problem deals with maintaining a set of keys.
+ The basic variant allows insertions, deletions, and 
+\emph on
+predecessor
+\emph default
+ queries which find the greatest contained key that is less than a given
+ value.
+ For computational model we use the word-RAM
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "HagerupT98"
+
+\end_inset
+
+, and we restrict keys to word-sized integers.
+ That can be shown not to be a significant limitation (asymptotically),
+ as many other cases can be converted to it cheaply, for example standard
+ floating-point and string keys 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "AndersT01"
+
+\end_inset
+
+.
+ 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+TODO: floating ref?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We study the behavior of the predecessor problem on specific input key distribut
+ions, which requires us to specify how we model the input.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+input model
+\end_layout
+
+\end_inset
+
+Insertions take values according to a density
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mu$
+\end_inset
+
+ that does not change during the whole life of the structure.
+ Deletions remove uniformly from the set of 
+\emph on
+contained
+\emph default
+ elements.
+ All the modifying operations are arbitrarily intermixed and independent.
+\end_layout
+
+\begin_layout Standard
+This model is convenient because it preserves 
+\begin_inset Quotes eld
+\end_inset
+
+randomness
+\begin_inset Quotes erd
+\end_inset
+
+ of the stored set
+\begin_inset space ~
+\end_inset
+
+-- at any point of execution the set appears to be created by independent
+ insertions only.
+ That is usually essential for complexity analyses in related structures.
+ 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+Various random deletion models were thoroughly studied by Knuth
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Knuth77"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+All related papers work with key distributions that can be described as
+ 
+\emph on
+smooth
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status collapsed
+
+\begin_layout Plain Layout
+IST structure was designed to work with a class of ``smooth'' distributions,
+ which is a superset of Willard's ``regular'' class.
+ The smooth class was later generalized by Andersson and Mattsson~ and we
+ will use their notation for IST as well.
+ The class of distributions used in IST corresponds by the following definition
+ to the $(s^
+\backslash
+alpha,
+\backslash
+sqrt s)$-smooth distributions (for an arbitrary constant $
+\backslash
+alpha<1$).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input

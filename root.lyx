@@ -269,16 +269,6 @@ fn1
 \end_inset
 
 
-\begin_inset Flex CorAuthormark
-status open
-
-\begin_layout Plain Layout
-cor1
-\end_layout
-
-\end_inset
-
-
 \begin_inset Argument 1
 status open
 
@@ -326,7 +316,7 @@ fnref
 \end_layout
 
 \begin_layout Email
-http://www.elsevier.com
+http://vcunat.matfyz.cz
 \begin_inset Argument 1
 status open
 
@@ -346,20 +336,6 @@ status open
 
 \begin_layout Plain Layout
 fn1
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Corresponding author
-Corresponding author
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-cor1
 \end_layout
 
 \end_inset
