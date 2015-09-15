@@ -9,12 +9,21 @@
 
 % use this if you need line numbers
 %\usepackage{lineno}
+
+\usepackage{varioref} % more-clickable references to pages via \vpageref and \vpagerefrange
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts} % \mathbb for naturals, etc.
+\usepackage{aliascnt} % counter aliasing - for numbering of theorem enviroments
 \end_preamble
 \use_default_options false
 \begin_modules
-theorems-std
+theorems-ams
+theorems-ams-extended
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children true
 \language english
 \language_package default
 \inputencoding auto
@@ -38,6 +47,15 @@ theorems-std
 \paperfontsize default
 \spacing single
 \use_hyperref false
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize default
 \use_geometry false
 \use_package amsmath 0
