@@ -1,0 +1,72 @@
+
+
+
+
+Let $\mu$ be a $(s^\alpha,s^{1-\delta})$-smooth distribution for some $\alpha,\delta > 0$. The Definition~\ref{IS.smoothness} (smoothness)  gives us
+\begin{multline*}
+	\exists\beta \; \forall c_1,c_2,c_3 \quad a \le c_1 < c_2 < c_3 \le b \quad \forall s \in \natural \\
+		\Prob{  X \in \interval{ c_2 - \frac{c_3-c_1}{s^\alpha} }{c_2} \; \middle| \; X \in \interval{c_1}{c_3}  }
+		\lespaces \frac{\beta s^{1-\delta}}{s}  \eqspaces  \beta s^{-\delta}.
+\end{multline*}
+We choose to cover the whole range $\interval{c_1}{c_3} := \interval a b$. That removes the conditioning, because it is always fulfilled.
+\[
+	\exists\beta \; \forall c_2 \quad a < c_2 < b \quad \forall s \in \natural \quad
+		\Prob{  X \in \interval{ c_2 - \frac{b-a}{s^\alpha} }{c_2}  }
+		\lespaces \beta s^{-\delta}
+\]
+
+Now we consider dividing the range $\interval a b$ into at least $n^d$ equally-sized buckets for some parameter $d>0$ that will be chosen later ($n$ is the size of the set to be stored). That means the bucket index where a value belongs is given by its first $d \log n$ bits.
+
+Note that this technique is different from the clustering used in LVEBT, on the other hand it is almost the same as splitting of bit representations in HVEBT. The clusters were created by the number of contained elements and thus the transformation decreased the size of the stored set, resulting in lower space usage.
+Bucketing, however, groups elements with many common starting bits, so it decreases the size of the universe set instead. That is essential, because we need to decrease the query time, which only depends on universe size in van Emde Boas tree variants.
+
+If we choose $c_2$ as the endpoint of an arbitrary%
+	\footnote{There is a technical difficulty with the last bucket, because the definition (taken from referred papers) doesn't allow us to choose $c_2 = b$ for some unknown reason.
+	However, we can choose $c_2 := b-\epsilon$ for such an $\epsilon$ that the interval covers the whole bucket except for the maximal value. Adding one value to the last bucket separately then doesn't affect the validity of the implied Lemma~\ref{NEW.smooth-bucket-lemma}.}
+bucket $B$ and choose $s:= \lfloor n^{d / \alpha} \rfloor$, then
+$ s^\alpha = \lfloor n^{d / \alpha} \rfloor ^\alpha \le n^d $ and thus the probability covers at least the whole bucket. Let us denote $p_B \equiv \Prob{ X_\mu \text{ falls into the bucket }B }$, then we get
+\[	p_B \lespaces \beta s^{-\delta}
+	\lespaces \beta {\lfloor n^{d / \alpha} \rfloor}^{-\delta}
+	\lespaces \beta \left( n^{d / \alpha} - 1 \right) ^{-\delta}.
+\] \[
+\text{Since } \lim_{n \to \infty}
+	\frac{ ( n^{d / \alpha} ) ^{-\delta} }{ ( n^{d / \alpha} - 1 ) ^{-\delta} }
+	= 1 \text{, we have } p_B \in \OO(n^{-\delta \frac d \alpha}).
+\]
+
+In our random process the elements are taken independently, so the number of elements in $B$ is given by the binomial distribution. If we use $\mu$ to generate $n$ values in $\interval a b$, then
+\[	n_B \equiv \Exp{\text{number of values in }B}
+	\eqspaces n \cdot p_B \quad\rightarrow\quad
+	n_B \in \OO(n^{1 - \delta \frac d \alpha}).
+\] By choosing $ d \ge \frac \alpha \delta$ we ensure that $n_B \in \OO(1)$, because $\alpha,\delta > 0$. We summarize our analysis in the following lemma.
+\begin{lemma} \label{NEW.smooth-bucket-lemma}
+	Let us generate $n$ values by a $(s^\alpha,s^{1-\delta})$-smooth distribution for some $\alpha,\delta > 0$, and divide the whole range into at least $n^{\alpha / \delta}$ equal-sized buckets. Then the expected number of elements in an \emph{arbitrary} bucket is $\OO(1)$.
+\end{lemma}
+
+The number of elements in a bucket is expected to be constant, but it can be bounded much stronger. For example, choosing $d \ge 2 \frac\alpha\delta$ and using Chernoff bounds~\cite[chapter~4.1]{randomAlgs} would moreover guarantee that the bad behaviour is very rare.
+We don't do this finer analysis, because there is a more pressing problem that we do not attempt to solve in this text~-- the unrealistic character of the used models.
+We use them for our analysis to enable comparison with known structures, as we only found one published structure that uses different models (discussed in section~\vref{IS.different}).
+
+\section{An amortized scheme} \label{NEW.amortized-scheme}
+In the analysis we found out that in our model the first $\Theta(\log n)$ bits are likely to be an almost unique identifier among $n$ elements. We will use $k$ to denote this number of significant bits.
+We are going to use van Emde Boas tree (LVEBT) to represent the $k$ starting bits, which will give us $\OO(\log\log n)$ expected amortized time for any operation, but we still need to solve two problems.
+One of them is the fact that $k$ needs to change during the life of the structure according to $n$ to satisfy Lemma~\ref{NEW.smooth-bucket-lemma}. The other problem is that we want the structure to work efficiently without knowing the parameters $\alpha$ and $\delta$.
+
+\def\Half{\frac 1 2}
+
+To remove dependency on the distribution's parameters, we simply choose a~growing function instead of the factor $\frac \alpha \delta$.
+The time complexity of van Emde Boas trees is so low that we can afford to use a $\Theta(\log n)$ function, giving us $k \in \Theta(\log^2 n)$ significant bits.
+More precisely, we will maintain $k \in \intervalOO{\Half \log^2 n}{2 \log^2 n}$.
+When the structure is small ($\Half \log n < \frac \alpha \delta$), we might not fit into Lemma~\ref{NEW.smooth-bucket-lemma}, but that is only for inputs of constant size ($n < 2^{2 \alpha / \delta}$). It follows that the asymptotic complexities aren't affected and the expected size of any nonempty bucket is still $\OO(1)$.
+
+Note that this kind of averaging for the size of buckets is different from the one generated by our dictionaries. In the bucketing, similarly to all methods in Chapter~\ref{IS.chapter}, there exist bad sets of input that always fall into the same bucket and thus they always cause the structure to perform slowly.
+On the other hand, in our dictionaries we avoided such dependency on the input by utilising universal hashing in the implementation. In this way the dictionary operations were made to work in $\Theta(1)$ time on average for \emph{any set} of input values, only considering the average over the (pseudo)random bits.
+
+To change $k$ we rebuild the structure periodically. We will always choose $k$ as a power of two and whenever $\log^2 n$ reaches a different power of two, we rebuild the whole structure with the new $k$. That will exactly ensure that we keep $k$ in the desired interval.
+
+The rebuild clearly happens when the value of $\log^2 n$ changes from $\log^2 n_0$ to $2 \log^2 n_0$ or $\frac 1 2 \log^2 n_0$, that is when $n$ changes from $n_0$ to $n_0^{\sqrt 2}$ or $n_0^{1 / \sqrt 2}$.
+It follows that during a rebuild, the number of modifying operations since the last rebuild is $\Omega(n)$, where $n$ is the current number of contained values.
+
+We suppose that the rebuilding time is at most $\OO(n)$-times larger than the time needed for modifying operations, because otherwise we could simulate the rebuild by $\OO(n)$ \aMethod{FindMin, Delete} and \aMethod{Insert} operations.
+It follows that the rebuilding time can be amortized into additional time that is asymptotically at most equal to the modification time.
+As a consequence we can charge the rebuilding time to preceding modifying operations in a way that the expected amortized asymptotic times of modification operations aren't affected by the spread-out price for periodical rebuilds.

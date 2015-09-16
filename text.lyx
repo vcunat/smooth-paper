@@ -264,20 +264,17 @@ contained
 \end_layout
 
 \begin_layout Standard
-This model is convenient because it preserves 
-\begin_inset Quotes eld
-\end_inset
-
-randomness
-\begin_inset Quotes erd
-\end_inset
-
- of the stored set
+This model is convenient because it preserves distribution of the stored
+ set
 \begin_inset space ~
 \end_inset
 
 -- at any point of execution the set appears to be created by independent
- insertions only.
+ 
+\begin_inset Formula $\mu$
+\end_inset
+
+-insertions only.
  That is usually essential for complexity analyses in related structures.
  
 \begin_inset Note Greyedout
@@ -307,8 +304,16 @@ key "Knuth77"
 All related papers work with key distributions that can be described as
  
 \emph on
-smooth
+
+\begin_inset Formula $\left(s^{\alpha},s^{1-\delta}\right)$
+\end_inset
+
+-smooth
 \emph default
+ for some constants 
+\begin_inset Formula $\alpha,\delta>0$
+\end_inset
+
 .
 \end_layout
 
@@ -334,6 +339,24 @@ alpha<1$).
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "def-smooth.tex"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Related work
+\end_layout
+
+\begin_layout Section
+Static analysis of bucketing
 \end_layout
 
 \begin_layout Standard
