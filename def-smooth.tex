@@ -3,7 +3,7 @@
 	Let $\mu$ be the density of a probability distribution over an interval~$\interval a b$. Given two functions $f_1$ and $f_2$, $\mu$ is \emphDef{$\emphDefMath{(f_1,f_2)}$-smooth} iff
 	\begin{multline*}
 		\exists\beta \; \forall c_1,c_2,c_3 \quad a \le c_1 < c_2 < c_3 \le b \quad \forall s \in \natural \\
-		\Prob{  X \in \interval{ c_2 - \frac{c_3-c_1}{f_1(s)} }{c_2} \; \middle| \; X \in \interval{c_1}{c_3}  }
+		\ProbParam{X \sim \mu}{  X \in \interval{ c_2 - \frac{c_3-c_1}{f_1(s)} }{c_2} \; \middle| \; X \in \interval{c_1}{c_3}  }
 		\lespaces \frac{\beta f_2(s)}{s}
 	\end{multline*}
 \end{defn}

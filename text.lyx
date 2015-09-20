@@ -178,6 +178,10 @@ discuss comparison to previous work, condemn the smoothness model, etc.
 
 \end_deeper
 \begin_layout Standard
+Some very short overview somewhere in the beginning of the text?
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -208,9 +212,9 @@ key "HagerupT98"
 \end_inset
 
 , and we restrict keys to word-sized integers.
- That can be shown not to be a significant limitation (asymptotically),
- as many other cases can be converted to it cheaply, for example standard
- floating-point and string keys 
+ That can be shown not to be a significant limitation, as many other cases
+ can be converted to it cheaply (asymptotically), for example standard floating-
+point and string keys 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "AndersT01"
@@ -355,6 +359,13 @@ filename "def-smooth.tex"
 Related work
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Static analysis of bucketing
 \end_layout
@@ -363,6 +374,20 @@ Static analysis of bucketing
 \begin_inset CommandInset include
 LatexCommand input
 filename "smooth-lemma.tex"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+Trash
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "trash.tex"
 
 \end_inset
 
