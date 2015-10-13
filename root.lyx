@@ -26,7 +26,7 @@ theorems-ams-extended
 \maintain_unincluded_children true
 \language english
 \language_package default
-\inputencoding auto
+\inputencoding utf8
 \fontencoding global
 \font_roman default
 \font_sans default

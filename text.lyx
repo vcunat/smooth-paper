@@ -99,12 +99,27 @@ filename "macros.tex"
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Section*
 Plan
 \end_layout
 
 \begin_layout Itemize
-explain the task:
+? some very short overview somewhere in the beginning of the text.
+\end_layout
+
+\begin_layout Itemize
+explain the task (Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:defs"
+
+\end_inset
+
+):
 \end_layout
 
 \begin_deeper
@@ -127,7 +142,8 @@ previous work:
 
 \begin_deeper
 \begin_layout Itemize
-review the claimed asympotic complexities
+review the claimed asympotic complexities; perhaps provide a table for the
+ most important cases?
 \end_layout
 
 \begin_layout Itemize
@@ -139,7 +155,7 @@ review the claimed asympotic complexities
 \end_layout
 
 \begin_layout Itemize
-+? compare to 
+? compare to 
 \begin_inset Quotes eld
 \end_inset
 
@@ -169,16 +185,201 @@ distribution-less
 \end_layout
 
 \begin_layout Itemize
-proposal and analysis of some particular configuration(s)
+general two-level scheme using the lemma;
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Similarly to what van Emde Boas trees do, we suggest to split the bit-representa
+tion into two parts, but asymmetrically.
+ In both parts we propose to use standard structures that do not depend
+ on distribution of the input.
+ The speed in the more-significant bits will be due to the keys being short,
+ and in less-significant bits the number of keys will be small in expected
+ case.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+analysis of some particular configuration(s), compared to previous works
 \end_layout
 
 \begin_layout Itemize
-discuss comparison to previous work, condemn the smoothness model, etc.
+condemn the smoothness model, etc.
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-Some very short overview somewhere in the beginning of the text?
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction (stubs)
+\end_layout
+
+\begin_layout Standard
+In Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:smooth-bucket"
+
+\end_inset
+
+ we formalize and prove a key property of smooth distributions that seems
+ implicitly used in all related work (in weaker forms) as the most important
+ step to achieve the stated performance, and in Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:main-results"
+
+\end_inset
+
+ we show how to utilize the property directly with well-known distribution-indep
+endent structures for the predecessor problem to get better performance
+ in much simpler way, essentially by converting to the case of polynomial-sized
+ universe.
+\end_layout
+
+\begin_layout Paragraph
+Mehlhorn & Tsakalidis 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MehlT93"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Smoothness: they use 
+\begin_inset Formula $\delta=1/2$
+\end_inset
+
+, and 
+\begin_inset Formula $\alpha<1$
+\end_inset
+
+ to get linear space.
+\end_layout
+
+\begin_layout Itemize
+Complexity: 
+\begin_inset Formula $\OO(\log\log n)$
+\end_inset
+
+ expected.
+\end_layout
+
+\begin_layout Paragraph
+Andersson & Mattsson 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "AndersM93"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Main result:
+\end_layout
+
+\begin_layout Itemize
+Smoothness: 
+\begin_inset Formula $\left(s/(\log\log s)^{1+\epsilon},s^{1-\delta}\right)$
+\end_inset
+
+ with any 
+\begin_inset Formula $\epsilon,\delta>0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Complexity: 
+\begin_inset Formula $\OO(\log\log n)$
+\end_inset
+
+ expected.
+\end_layout
+
+\begin_layout Standard
+They note the bounded-density case.
+\end_layout
+
+\begin_layout Paragraph
+Kaporis &al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KMSTTZ06"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Main result: same as 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "AndersM93"
+
+\end_inset
+
+, but improved worst-case, it seems.
+\end_layout
+
+\begin_layout Paragraph
+Bellazougui & al.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BKS11"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+They need space 
+\begin_inset Formula $\OO\left(n^{1+\epsilon}\right)$
+\end_inset
+
+ for any 
+\begin_inset Formula $\epsilon>0$
+\end_inset
+
+, and the structure is not fully dynamic, it seems.
+\end_layout
+
+\begin_layout Paragraph
+Without assumptions on input
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PatrasT06"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -189,7 +390,14 @@ Some very short overview somewhere in the beginning of the text?
 \end_layout
 
 \begin_layout Section
-Definitions (stub)
+Definitions 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:defs"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -212,9 +420,9 @@ key "HagerupT98"
 \end_inset
 
 , and we restrict keys to word-sized integers.
- That can be shown not to be a significant limitation, as many other cases
- can be converted to it cheaply (asymptotically), for example standard floating-
-point and string keys 
+ That can be shown not to be a significant limitation, as many other key
+ types can be converted to the integer case cheaply (asymptotically), for
+ example standard floating-point and string keys 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "AndersT01"
@@ -319,25 +527,57 @@ All related papers work with key distributions that can be described as
 \end_inset
 
 .
+ Typically it is assumed that the particular density of the structure is
+ not known, but 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\delta$
+\end_inset
+
+ are fixed parameters.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Note*
+If the distribution 
+\emph on
+was
+\emph default
+ known and its inverse cumulative distribution function 
+\begin_inset Formula $F^{-1}$
+\end_inset
+
+ was cheaply computable (or approximable), we could convert it to the uniform
+ case (or another bounded density).
+ We could simply store keys transformed by 
+\begin_inset Formula $F^{-1}$
+\end_inset
+
+ which also preserves ordering.
+ With any bounded input distribution, all operations can be easily handled
+ in constant time by simply splitting the key range into 
+\begin_inset Formula $\Theta(n)$
+\end_inset
+
+ intervals and mapping each to an element of an array.
+ This solution for bounded distributions was noted already by Andersson
+ and Mattsson 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Sec. 5.2"
+key "AndersM93"
+
+\end_inset
+
+.
+ 
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
-IST structure was designed to work with a class of ``smooth'' distributions,
- which is a superset of Willard's ``regular'' class.
- The smooth class was later generalized by Andersson and Mattsson~ and we
- will use their notation for IST as well.
- The class of distributions used in IST corresponds by the following definition
- to the $(s^
-\backslash
-alpha,
-\backslash
-sqrt s)$-smooth distributions (for an arbitrary constant $
-\backslash
-alpha<1$).
+TODO: the second half of this paragraph might better be moved into the related-w
+ork section.
 \end_layout
 
 \end_inset
@@ -355,10 +595,6 @@ filename "def-smooth.tex"
 
 \end_layout
 
-\begin_layout Section
-Related work
-\end_layout
-
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
@@ -367,7 +603,14 @@ Related work
 \end_layout
 
 \begin_layout Section
-Static analysis of bucketing
+Static analysis of bucketing 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:smooth-bucket"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -380,11 +623,184 @@ filename "smooth-lemma.tex"
 
 \end_layout
 
+\begin_layout Section
+Putting things together and comparing to related work 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:main-results"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We propose to split the bit representation of every key into two parts,
+ exactly as one step of van Emde Boas trees except for splitting asymmetrically.
+ In both parts we propose to use standard structures that do not depend
+ on distribution of the input.
+ The speed on the more significant bits will be due to the keys being short,
+ and in the less significant bits the number of keys will be small in expected
+ case due to smoothness.
+\end_layout
+
+\begin_layout Standard
+To cover the cases most studied in previous work, we focus on using linear
+ space and work with 
+\begin_inset Formula $\left(s^{\alpha},s^{1-\delta}\right)$
+\end_inset
+
+-smooth distributions.
+ To use Lemma
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:smooth-bucket"
+
+\end_inset
+
+, we need to split away at least 
+\begin_inset Formula $(\alpha/\delta)\log n$
+\end_inset
+
+ bits.
+ If the values of parameters are unknown, we can split away more bits to
+ be asympotically certain, e.g.
+ 
+\begin_inset Formula $\log^{2}n$
+\end_inset
+
+.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+These bounds on the number of bits change during the life of the structure,
+ but we can easily ensure we cut at least that many by a full rebuild after
+ every 
+\begin_inset Formula $n_{0}/4$
+\end_inset
+
+ modifying operations where 
+\begin_inset Formula $n_{0}$
+\end_inset
+
+ denotes the size of the stored set during the last rebuild.
+ It would also be possible to deamortize that process by standard 
+\emph on
+global rebuilding
+\emph default
+.
+\end_layout
+
+\end_inset
+
+ On these more significant bits we can use standard hashed van Emde Boas
+ trees to get 
+\begin_inset Formula $\OO\left(\log\left(\log^{2}n\right)\right)=\OO\left(\log\log n\right)$
+\end_inset
+
+ expected amortized time per operation.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Note that the expectation is independent of the input when handling the
+ more significant bits, as it only comes from randomization during hashing.
+\end_layout
+
+\end_inset
+
+ Each substructure for the less significant bits is expected to need to
+ store 
+\begin_inset Formula $\OO(1)$
+\end_inset
+
+ keys, but if we wanted to cut down time on unfavorable input similarly
+ to 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KMSTTZ06"
+
+\end_inset
+
+, there are standard structures needing time 
+\begin_inset Formula $\OO(\!\sqrt{\log n/\log\log n})$
+\end_inset
+
+ (considering the less precise bounds).
+ The resulting performance is essentially the same as that of Kaporis et
+\begin_inset space ~
+\end_inset
+
+al.
+\begin_inset space ~
+\end_inset
+
+but for lifting the restriction of 
+\begin_inset Formula $\alpha\le1$
+\end_inset
+
+, and our approach is conceptually much simpler.
+\end_layout
+
+\begin_layout Standard
+If we allow slightly more space of 
+\begin_inset Formula $\OO\left(n^{1+1/o(\log n)}\right)\supset\OO\left(n^{1+\epsilon}\right)$
+\end_inset
+
+ words, we immeditely get 
+\begin_inset Formula $\OO(1)$
+\end_inset
+
+ expected time due to the way van Emde Boas trees speed up in that case
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Sec. 1.3.2"
+key "PatrasT06"
+
+\end_inset
+
+.
+ This covers the cases studied in an unpublished work of Bellazougui et
+\begin_inset space ~
+\end_inset
+
+al.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BKS11"
+
+\end_inset
+
+, also in a simpler way.
+\end_layout
+
+\begin_layout Standard
+We feel that it is good to decouple most of the analysis from complex conditions
+ on the input, as especially in practice we can rarely assume that all operation
+s on the structure are independent and identically distributed.
+ For the above approach to work, it is enough that the information is only
+ carried by a sufficiently short bit prefix of the keys.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
 \begin_layout Part
 Trash
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset CommandInset include
 LatexCommand input
 filename "trash.tex"
@@ -394,10 +810,33 @@ filename "trash.tex"
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+References
+\end_layout
+
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "../refs"
+bibfiles "./refs"
 options "bibtotoc,elsarticle-harv"
 
 \end_inset
