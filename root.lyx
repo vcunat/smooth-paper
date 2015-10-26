@@ -5,7 +5,7 @@
 \textclass elsarticle
 \begin_preamble
 % specify here the journal
-\journal{TODO: journal}
+\journal{Information Processing Letters}
 
 % use this if you need line numbers
 %\usepackage{lineno}
@@ -97,6 +97,16 @@ theorems-ams-extended
 \end_header
 
 \begin_body
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "macros.tex"
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Standard
 \begin_inset Note Note
@@ -330,7 +340,12 @@ url
 \end_layout
 
 \begin_layout Author footnote
-TODO: support from GAČR and MFF 
+This research was supported by project GA14-10799S (
+\series bold
+TODO
+\series default
+) and by SVV project number 260 104.
+ 
 \begin_inset Argument 1
 status open
 
@@ -344,7 +359,8 @@ fn1
 \end_layout
 
 \begin_layout Address
-TODO: MFF address
+Faculty of Mathematics and Physics, Charles University in Prague, Czech
+ Republic 
 \begin_inset Argument 1
 status open
 
@@ -358,7 +374,7 @@ mff
 \end_layout
 
 \begin_layout Address
-TODO: CS CAS address
+Institute of Computer Science, The Czech Academy of Sciences
 \begin_inset Argument 1
 status open
 
@@ -425,11 +441,39 @@ River Valley Technologies, 9, Browns Court, Kennford, Exeter, United Kingdom
 \end_layout
 
 \begin_layout Abstract
-Abstract, should normally be not longer than 200 words.
+We follow a research thread studying the predecessor problem on 
+\begin_inset Quotes eld
+\end_inset
+
+smooth
+\begin_inset Quotes erd
+\end_inset
+
+ distribution families.
+ We propose a conceptually simpler solution utilizing well-known results
+ from much better studied variant of the problem that assumes nothing about
+ the input.
+ As a side effect, we are able to extend the range of handled input distribution
+s for the most studied case needing expected 
+\begin_inset Formula $\OO\left(\log\log n\right)$
+\end_inset
+
+ time, and we provide better insight into why the related methods are faster
+ on smooth inputs.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+~80 words currently, which seems a good length (suggested: <200)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Keywords
-quadruple exiton 
+data structures 
 \begin_inset ERT
 status collapsed
 
@@ -442,7 +486,7 @@ sep
 
 \end_inset
 
- polariton 
+ computational complexity 
 \begin_inset ERT
 status collapsed
 
@@ -455,59 +499,11 @@ sep
 
 \end_inset
 
- WGM 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-PACS
-\end_layout
-
-\end_inset
-
- 71.35.-y 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-sep
-\end_layout
-
-\end_inset
-
- 71.35.Lk 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-sep
-\end_layout
-
-\end_inset
-
- 71.36.+c 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-MSC[2008]
-\end_layout
-
-\end_inset
-
-23-557
+ search tree 
+\series bold
+TODO
+\series default
+ 
 \begin_inset Note Note
 status collapsed
 
