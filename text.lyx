@@ -314,7 +314,7 @@ We study the behavior of the predecessor problem on specific input key distribut
 ions, which requires us to specify how we model the input:
 \end_layout
 
-\begin_layout Definition*
+\begin_layout Definition
 \begin_inset Argument 1
 status open
 
@@ -338,8 +338,8 @@ Insertions take keys distributed according to a density
 contained
 \emph default
  elements.
- All the operations are arbitrarily intermixed and the key are chosen independen
-t of each other.
+ All the operations are arbitrarily intermixed and the keys are chosen independe
+ntly of each other.
 \end_layout
 
 \begin_layout Standard
@@ -512,7 +512,15 @@ To cover the cases most studied in previous work, we focus on using linear
 \end_inset
 
 -smooth distributions.
- To use Lemma
+ To use the
+\begin_inset space ~
+\end_inset
+
+Lemma
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset space ~
 \end_inset
 
@@ -520,6 +528,11 @@ To cover the cases most studied in previous work, we focus on using linear
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:smooth-bucket"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -597,8 +610,7 @@ Note that the expectation is independent of the input when handling the
 
 \end_inset
 
- Each substructure for the less significant bits is expected to need to
- store 
+ Each substructure for the less significant bits is expected to store 
 \begin_inset Formula $\OO(1)$
 \end_inset
 
@@ -646,7 +658,7 @@ but for lifting the restriction of
 , and our approach is conceptually much simpler.
 \end_layout
 
-\begin_layout Corollary
+\begin_layout Theorem*
 \begin_inset Argument 1
 status open
 
@@ -736,6 +748,7 @@ key "Cunat10"
 .
  Many thanks belong to his supervisor Václav Koubek for helpful discussions
  during our research into this problem.
+ Tomáš Dvořák helped to improve presentation of this text.
 \begin_inset Note Note
 status open
 

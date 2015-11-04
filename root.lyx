@@ -335,11 +335,12 @@ url
 \end_layout
 
 \begin_layout Author footnote
-This research was supported by project GA14-10799S (
-\series bold
-TODO
-\series default
-) and by SVV project number 260 104.
+This research was supported by the Czech Science Foundation under grant
+ GA14-10799S and by SVV project number 260
+\begin_inset space ~
+\end_inset
+
+104.
  
 \begin_inset Argument 1
 status open

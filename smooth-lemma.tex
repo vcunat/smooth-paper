@@ -1,7 +1,7 @@
 
 In this section we show how smoothness implies that an arbitrary sufficiently short interval is expected to get only constant number of input keys.
 
-\begin{lemma} \label{lem:smooth-bucket}
+\begin{lem*}% \label{lem:smooth-bucket}
 	$\forall \alpha,\delta > 0, \;
 	 \forall n \in \natural:
 	$ let us generate $n$ keys from a $(s^\alpha,s^{1-\delta})$-smooth distribution and split the whole domain into at least $n^{\alpha / \delta}$ equally long intervals.
@@ -24,8 +24,10 @@ We choose to cover the whole domain $\interval{c_1}{c_3} := \interval a b$. The 
 
 Now we consider splitting the domain into $k \ge n^{\alpha / \delta}$ equally long intervals.
 Let us choose $c_2$ as the endpoint of an arbitrary%
-	\footnote{There is a technical difficulty with the last interval, because the definition (taken from referred papers) does not allow us to choose $c_2 = b$ for some unknown reason.
-	However, we can choose $c_2 := b-1$, so only the maximal value is not covered. Adding a single key to the last interval separately then does not affect the validity of the implied Lemma~\ref{lem:smooth-bucket}.}
+	\footnote{There is a technical difficulty with the last interval, because Definition~\ref{def:smooth} (taken from referred papers) does not allow us to choose $c_2 = b$ for some unknown reason.
+	However, we can choose $c_2 := b-1$, so only the maximal value is not covered. Adding a single key to the last interval separately then does not affect the validity of the implied Lemma%~\ref{lem:smooth-bucket}
+	.
+	}
 interval $I$ and choose $s:= \lfloor n^{1 / \delta} \rfloor$, so
 $ s^\alpha \le n^{\alpha / \delta} \le k $ and thus the probability covers at least the whole $I$:
 \[	\Prob{X \in I} \lespaces \beta s^{-\delta}
@@ -42,7 +44,7 @@ The input keys are chosen independently, so the number of keys in $I$ is given b
 $ n \cdot \Prob{X \in I} \in \OO(1)$.
 
 \end{proof}
-\end{lemma}
+\end{lem*}
 
 The number of keys in an interval is expected to be constant, but the tail of binomial distribution can be bounded much stronger, e.\,g.~by Chernoff bounds~\cite[chapter~4.1]{randomAlgs}, to guarantee that the bad behaviour is very rare.
 We do not elaborate on a finer analysis, because there is a more pressing problem that we do not solve in this paper~-- the unrealistic (unmotivated) character of the used input model.
