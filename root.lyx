@@ -10,11 +10,6 @@
 % use this if you need line numbers
 %\usepackage{lineno}
 
-\usepackage{varioref} % more-clickable references to pages via \vpageref and \vpagerefrange
-
-\usepackage{amsthm}
-\usepackage{amsmath}
-\usepackage{amssymb}
 \usepackage{amsfonts} % \mathbb for naturals, etc.
 \usepackage{aliascnt} % counter aliasing - for numbering of theorem enviroments
 \end_preamble
@@ -42,7 +37,7 @@ theorems-ams-extended
 \default_output_format default
 \output_sync 1
 \output_sync_macro "\synctex=-1"
-\bibtex_command bibtex
+\bibtex_command default
 \index_command default
 \paperfontsize default
 \spacing single
@@ -58,19 +53,19 @@ theorems-ams-extended
 \pdf_pdfusetitle true
 \papersize default
 \use_geometry false
-\use_package amsmath 0
-\use_package amssymb 0
-\use_package cancel 0
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
 \use_package esint 1
 \use_package mathdots 1
-\use_package mathtools 0
+\use_package mathtools 1
 \use_package mhchem 1
-\use_package stackrel 0
-\use_package stmaryrd 0
-\use_package undertilde 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine natbib
 \cite_engine_type numerical
-\biblio_style plainnat
+\biblio_style elsarticle-harv
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -580,8 +575,43 @@ lineno
 
 \begin_layout Standard
 \begin_inset CommandInset include
-LatexCommand include
+LatexCommand input
 filename "text.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+References
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "./refs"
+options "bibtotoc,elsarticle-harv"
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The following bibliography styles are allowed: 
+\family sans
+elsarticle-harv
+\family default
+, 
+\family sans
+elsarticle-num-names
+\family default
+, or 
+\family sans
+elsarticle-num
+\end_layout
 
 \end_inset
 

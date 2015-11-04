@@ -37,7 +37,7 @@ $ s^\alpha \le n^{\alpha / \delta} \le k $ and thus the probability covers at le
 	= 1 \text{, we have } \Prob{X \in I} \in \OO(1/n).
 \]
 %TODO: the \in may look strange before \OO
-
+%
 The input keys are chosen independently, so the number of keys in $I$ is given by the binomial distribution, and its expected value equals
 $ n \cdot \Prob{X \in I} \in \OO(1)$.
 
@@ -46,6 +46,6 @@ $ n \cdot \Prob{X \in I} \in \OO(1)$.
 
 The number of keys in an interval is expected to be constant, but the tail of binomial distribution can be bounded much stronger, e.\,g.~by Chernoff bounds~\cite[chapter~4.1]{randomAlgs}, to guarantee that the bad behaviour is very rare.
 We do not elaborate on a finer analysis, because there is a more pressing problem that we do not solve in this paper~-- the unrealistic (unmotivated) character of the used input model.
-We use them for our analysis to enable comparison with known structures, as we have only found one published structure that uses a different model~\cite{DemaineJP04} and moreover the bounds implied in that case seem relatively weak. %{\bf TODO: reformulate?}
+We use it for our analysis to enable comparison with known structures, as we have only found one published structure that uses a different model~\cite{DemaineJP04} and moreover the bounds implied in that case seem relatively weak. %{\bf TODO: reformulate?}
 
 
