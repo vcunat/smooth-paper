@@ -1,11 +1,5 @@
 
-In this section we show how smoothness implies that an arbitrary sufficiently short interval is expected to get only constant number of input keys.
-
-\begin{lem*}% \label{lem:smooth-bucket}
-	$\forall \alpha,\delta > 0, \;
-	 \forall n \in \natural:
-	$ let us generate $n$ keys from a $(s^\alpha,s^{1-\delta})$-smooth distribution and split the whole domain into at least $n^{\alpha / \delta}$ equally long intervals.
-	Then the expected number of keys in an interval is $\OO(1)$.
+%\begin{lem*}% \label{lem:smooth-bucket}
 
 \begin{proof}
 
@@ -44,7 +38,6 @@ The input keys are chosen independently, so the number of keys in $I$ is given b
 $ n \cdot \Prob{X \in I} \in \OO(1)$.
 
 \end{proof}
-\end{lem*}
 
 The number of keys in an interval is expected to be constant, but the tail of binomial distribution can be bounded much stronger, e.\,g.~by Chernoff bounds~\cite[chapter~4.1]{randomAlgs}, to guarantee that the bad behaviour is very rare.
 We do not elaborate on a finer analysis, because there is a more pressing problem that we do not solve in this paper~-- the unrealistic (unmotivated) character of the used input model.

@@ -474,6 +474,40 @@ name "sec:smooth-bucket"
 \end_layout
 
 \begin_layout Standard
+In this section we show how smoothness implies that an arbitrary sufficiently
+ short interval is expected to get only constant number of input keys.
+\end_layout
+
+\begin_layout Lemma*
+Given 
+\begin_inset Formula $\alpha,\delta>0$
+\end_inset
+
+ and a positive integer 
+\begin_inset Formula $n$
+\end_inset
+
+, let us generate 
+\begin_inset Formula $n$
+\end_inset
+
+ keys from a 
+\begin_inset Formula $\left(s^{\alpha},s^{1-\delta}\right)$
+\end_inset
+
+-smooth distribution, and split the whole domain into at least 
+\begin_inset Formula $n^{\alpha/\delta}$
+\end_inset
+
+ equally long intervals.
+ Then the expected number of keys in an interval is 
+\begin_inset Formula $\OO(1)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
 filename "smooth-lemma.tex"
