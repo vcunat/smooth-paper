@@ -8,8 +8,10 @@
 \journal{Information Processing Letters}
 
 \usepackage{amsfonts} % \mathbb for naturals, etc.
+\usepackage{url}
 \usepackage{hyperref}
 \end_preamble
+\options preprint
 \use_default_options false
 \begin_modules
 theorems-ams
@@ -61,8 +63,8 @@ fixltx2e
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine basic
-\cite_engine_type default
+\cite_engine natbib
+\cite_engine_type numerical
 \biblio_style elsarticle-harv
 \use_bibtopic false
 \use_indices false
@@ -590,7 +592,7 @@ References
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "./refs"
-options "bibtotoc,elsarticle-harv"
+options "bibtotoc,elsarticle-num"
 
 \end_inset
 

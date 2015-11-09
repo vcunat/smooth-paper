@@ -681,11 +681,8 @@ Kaporis et
 \begin_inset space ~
 \end_inset
 
-al.
-\begin_inset space ~
-\end_inset
-
-but for lifting the restriction of 
+al., except that unlike all previous work we achieve linear space without
+ requiring 
 \begin_inset Formula $\alpha\le1$
 \end_inset
 
@@ -782,7 +779,7 @@ key "Cunat10"
 .
  Many thanks belong to his supervisor Václav Koubek for helpful discussions
  during our research into this problem.
- Tomáš Dvořák helped to improve presentation of this text.
+ 
 \begin_inset Note Note
 status open
 
