@@ -7,20 +7,18 @@
 % specify here the journal
 \journal{Information Processing Letters}
 
-% use this if you need line numbers
-%\usepackage{lineno}
-
 \usepackage{amsfonts} % \mathbb for naturals, etc.
-\usepackage{aliascnt} % counter aliasing - for numbering of theorem enviroments
+\usepackage{hyperref}
 \end_preamble
 \use_default_options false
 \begin_modules
 theorems-ams
 theorems-ams-extended
+fixltx2e
 \end_modules
 \maintain_unincluded_children true
 \language english
-\language_package default
+\language_package auto
 \inputencoding utf8
 \fontencoding global
 \font_roman default
@@ -63,8 +61,8 @@ theorems-ams-extended
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine natbib
-\cite_engine_type numerical
+\cite_engine basic
+\cite_engine_type default
 \biblio_style elsarticle-harv
 \use_bibtopic false
 \use_indices false
@@ -83,7 +81,7 @@ theorems-ams-extended
 \quotes_language english
 \papercolumns 1
 \papersides 2
-\paperpagestyle headings
+\paperpagestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
