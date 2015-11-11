@@ -338,8 +338,8 @@ Insertions take keys distributed according to a density
 contained
 \emph default
  elements.
- All the operations are arbitrarily intermixed and the keys are chosen independe
-ntly of each other.
+ All the operations are arbitrarily intermixed, and the keys are chosen
+ independently of each other.
 \end_layout
 
 \begin_layout Standard
@@ -355,12 +355,7 @@ This model is convenient because it preserves distribution of the stored
 
 -insertions only.
  That is usually essential for complexity analyses in related structures.
- 
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-Various random deletion models were thoroughly studied by Knuth
+ Various random deletion models were thoroughly studied by Knuth
 \begin_inset space ~
 \end_inset
 
@@ -372,11 +367,6 @@ key "Knuth77"
 \end_inset
 
 .
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -432,7 +422,7 @@ was
  and Mattsson 
 \begin_inset CommandInset citation
 LatexCommand cite
-after "Sec. 5.2"
+after "sec. 5.2"
 key "AndersM93"
 
 \end_inset
@@ -479,7 +469,13 @@ In this section we show how smoothness implies that an arbitrary sufficiently
 \end_layout
 
 \begin_layout Lemma*
-Given 
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:smooth-bucket"
+
+\end_inset
+
+ Given 
 \begin_inset Formula $\alpha,\delta>0$
 \end_inset
 
@@ -539,6 +535,93 @@ We propose to split the bit representation of every key into two parts,
  case due to smoothness.
 \end_layout
 
+\begin_layout Subsection
+Reviewing standard vEBT decomposition
+\end_layout
+
+\begin_layout Standard
+Standard van Emde Boas trees solve the predecessor problem with all operations
+ needing 
+\begin_inset Formula $\OO(\log l)$
+\end_inset
+
+ time when working with keys of 
+\begin_inset Formula $l$
+\end_inset
+
+ bits.
+ That assumes 
+\begin_inset Formula $l$
+\end_inset
+
+ is not asymptotically larger than the word length of the used word-RAM.
+\end_layout
+
+\begin_layout Standard
+The well-known decomposition can be viewed as performing binary search for
+ the longest prefix of bit-representation that is shared by the searched
+ key and some of the stored keys.
+ The structure stores a mapping from the more significant bit halves to
+ corresponding subsets of the less significant halves of the stored keys.
+ These subsets are stored recursively in the same way, and also the set
+ of occurring more significant halves is stored recursively.
+\end_layout
+
+\begin_layout Standard
+The operations on vEBT are carefully designed to perform at most one nontrivial
+ recursive call on each recursion level, and all the rest are constant-time
+ operations.
+\end_layout
+
+\begin_layout Standard
+To keep the space linear, some modifications to the original structure are
+ required.
+ The mappings can be represented by hash tables instead of simple arrays,
+ and indirection can be used: the whole set is split into 
+\begin_inset Formula $\Theta(\log l)$
+\end_inset
+
+-sized consecutive clusters in a fashion similar to B-trees where the actual
+ vEBT construction is only applied the whole clusters joined together by
+ a doubly linked list.
+ These changes make the complexity of insertions and deletions expected
+ and amortized where the expectation is only over random bits.
+\end_layout
+
+\begin_layout Standard
+A possible way of doing these modifications is described in more details
+ e.g.
+\begin_inset space ~
+\end_inset
+
+in
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after "chapter 4"
+key "Cunat10"
+
+\end_inset
+
+, including the algorithms for operations which can also be found in textbooks
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "chap. 20"
+key "intro2alg"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Modifying the vEBT decomposition
+\end_layout
+
 \begin_layout Standard
 To cover the cases most studied in previous work, we focus on using linear
  space and work with 
@@ -555,12 +638,13 @@ Lemma
 status open
 
 \begin_layout Plain Layout
+ from page
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand pageref
 reference "lem:smooth-bucket"
 
 \end_inset
@@ -582,13 +666,12 @@ reference "lem:smooth-bucket"
 \end_inset
 
 .
-\begin_inset Foot
-status open
+\end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 These bounds on the number of bits change during the life of the structure,
- but we can easily ensure that we cut at least that many by a full rebuild
- after every 
+ but we can easily ensure that we cut at least that many by performing a
+ full rebuild after every 
 \begin_inset Formula $n_{0}/4$
 \end_inset
 
@@ -598,15 +681,15 @@ These bounds on the number of bits change during the life of the structure,
 
  denotes the size of the stored set during the last rebuild.
  It would also be possible to deamortize that process by standard technique
- of 
-\emph on
-global rebuilding
-\emph default
-.
-\end_layout
+ of global rebuilding 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "global-rebuilding"
 
-\begin_layout Plain Layout
-Also note that 
+\end_inset
+
+.
+ Also note that 
 \begin_inset Formula $\left(\alpha/\delta\right)\log n>\log^{2}n$
 \end_inset
 
@@ -618,18 +701,9 @@ Also note that
  that base case.
 \end_layout
 
-\end_inset
-
- On these more significant bits we can use standard hashed van Emde Boas
- trees 
-\begin_inset CommandInset citation
-LatexCommand cite
-after "chap. 20, problems section"
-key "intro2alg"
-
-\end_inset
-
- to get 
+\begin_layout Standard
+On the split more significant bits we can use standard hashed vEBT to get
+ 
 \begin_inset Formula $\OO\left(\log\left(\log^{2}n\right)\right)=\OO\left(\log\log n\right)$
 \end_inset
 
@@ -638,8 +712,8 @@ key "intro2alg"
 status open
 
 \begin_layout Plain Layout
-Note that the expectation is independent of the input when handling the
- more significant bits, as it only comes from randomization during hashing.
+Note that the expectation remains independent of the input when handling
+ the more significant bits, as it only comes from randomization during hashing.
 \end_layout
 
 \end_inset
@@ -689,6 +763,27 @@ al., except that unlike all previous work we achieve linear space without
 , and our approach is conceptually much simpler.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+In the current layout the main result would be halved between two pages,
+ which would be really ugly.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Theorem*
 \begin_inset Argument 1
 status open
@@ -716,11 +811,11 @@ There is a structure solving the predecessor problem in
 \end_layout
 
 \begin_layout Standard
-If we allow slightly more space of 
+If we allowed slightly more space of 
 \begin_inset Formula $\OO\left(n^{1+1/o(\log n)}\right)\supset\OO\left(n^{1+\epsilon}\right)$
 \end_inset
 
- words, we immeditely get 
+ words, we would immeditely get 
 \begin_inset Formula $\OO(1)$
 \end_inset
 
@@ -734,7 +829,7 @@ key "PatrasT06"
 \end_inset
 
 .
- This covers the cases studied in an unpublished work of Bellazougui et
+ That covers the cases studied in an unpublished work of Bellazougui et
 \begin_inset space ~
 \end_inset
 

@@ -65,7 +65,7 @@ fixltx2e
 \use_package undertilde 1
 \cite_engine natbib
 \cite_engine_type numerical
-\biblio_style elsarticle-harv
+\biblio_style elsarticle-num
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
