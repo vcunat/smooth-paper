@@ -262,9 +262,9 @@ reference "sec:main-results"
 
 \end_inset
 
- we show how to utilize that property directly with well-known distribution-inde
+ we show how to utilize this property directly with well-known distribution-inde
 pendent structures for the predecessor problem to get better performance
- in much simpler way, essentially by converting to the case of polynomial-sized
+ in a simpler way, essentially by converting to the case of polynomial-sized
  universe.
 \end_layout
 
@@ -396,7 +396,7 @@ Most of related papers work with key distributions that can be described
  are fixed parameters.
 \end_layout
 
-\begin_layout Note*
+\begin_layout Remark*
 If the distribution 
 \emph on
 was
@@ -428,18 +428,6 @@ key "AndersM93"
 \end_inset
 
 .
- 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-TODO (probably not): the second half of this paragraph might better be moved
- into the related-work section.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -531,7 +519,7 @@ We propose to split the bit representation of every key into two parts,
  In both parts we propose to use standard structures that do not utilize
  distribution properties of the input.
  The speed on the more significant bits will be due to the keys being short,
- and in the less significant bits the number of keys will be small in expected
+ and for the less significant bits the number of keys will be small in expected
  case due to smoothness.
 \end_layout
 
@@ -561,14 +549,21 @@ Standard van Emde Boas trees solve the predecessor problem with all operations
 The well-known decomposition can be viewed as performing binary search for
  the longest prefix of bit-representation that is shared by the searched
  key and some of the stored keys.
- The structure stores a mapping from the more significant bit halves to
- corresponding subsets of the less significant halves of the stored keys.
+ The structure stores a mapping from the more significant halves to correspondin
+g subsets of the less significant halves of the stored keys.
  These subsets are stored recursively in the same way, and also the set
  of occurring more significant halves is stored recursively.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+There was a paragraph break here, but it worsened whole-page layout by splitting
+ the Theorem.
 \end_layout
 
-\begin_layout Standard
-The operations on vEBT are carefully designed to perform at most one nontrivial
+\end_inset
+
+ The operations on vEBT are carefully designed to perform at most one nontrivial
  recursive call on each recursion level, and all the rest are constant-time
  operations.
 \end_layout
@@ -581,9 +576,9 @@ To keep the space linear, some modifications to the original structure are
 \begin_inset Formula $\Theta(\log l)$
 \end_inset
 
--sized consecutive clusters in a fashion similar to B-trees where the actual
- vEBT construction is only applied the whole clusters joined together by
- a doubly linked list.
+-sized consecutive clusters in a fashion similar to B-trees, and the actual
+ vEBT construction is only applied to the whole clusters joined together
+ by a doubly linked list.
  These changes make the complexity of insertions and deletions expected
  and amortized where the expectation is only over random bits.
 \end_layout
@@ -610,7 +605,7 @@ key "Cunat10"
  
 \begin_inset CommandInset citation
 LatexCommand cite
-after "chap. 20"
+after "chapter 20"
 key "intro2alg"
 
 \end_inset
@@ -767,7 +762,7 @@ There is a structure solving the predecessor problem in
 \end_layout
 
 \begin_layout Subsection
-Concluding notes
+Concluding remarks
 \end_layout
 
 \begin_layout Standard
