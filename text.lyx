@@ -702,28 +702,18 @@ key "global-rebuilding"
 \end_layout
 
 \begin_layout Standard
-On the split more significant bits we can use standard hashed vEBT to get
+We can use standard hashed vEBT on the split more significant bits to get
  
 \begin_inset Formula $\OO\left(\log\left(\log^{2}n\right)\right)=\OO\left(\log\log n\right)$
 \end_inset
 
  expected amortized time per operation.
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Note that the expectation remains independent of the input when handling
- the more significant bits, as it only comes from randomization during hashing.
-\end_layout
-
-\end_inset
-
  Each substructure for the less significant bits is expected to store 
 \begin_inset Formula $\OO(1)$
 \end_inset
 
- keys, but if we wanted to cut down time on unfavorable input similarly
- to
+ keys.
+ The resulting performance is essentially the same as that of
 \begin_inset space ~
 \end_inset
 
@@ -742,46 +732,12 @@ key "KMSTTZ06"
 
 \end_inset
 
-, there are standard structures needing time 
-\begin_inset Formula $\OO(\!\sqrt{\log n/\log\log n})$
-\end_inset
-
- (considering the less precise bounds).
- The resulting performance is essentially the same as that of
-\begin_inset space ~
-\end_inset
-
-Kaporis et
-\begin_inset space ~
-\end_inset
-
-al., except that unlike all previous work we achieve linear space without
- requiring 
+, except that unlike all previous work we achieve linear space without requiring
+ 
 \begin_inset Formula $\alpha\le1$
 \end_inset
 
 , and our approach is conceptually much simpler.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-In the current layout the main result would be halved between two pages,
- which would be really ugly.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Theorem*
@@ -808,6 +764,37 @@ There is a structure solving the predecessor problem in
 
 .
  The distribution and parameters do not need to be known.
+\end_layout
+
+\begin_layout Subsection
+Concluding notes
+\end_layout
+
+\begin_layout Standard
+If we wanted to cut down time on unfavorable input, we can use the same
+ approach as
+\begin_inset space ~
+\end_inset
+
+Kaporis et
+\begin_inset space ~
+\end_inset
+
+al.
+ There are standard structures for the predecessor problem needing time
+ 
+\begin_inset Formula $\OO(\!\sqrt{\log n/\log\log n})$
+\end_inset
+
+ per operation on arbitrary input (considering the less precise bounds),
+ so these can be used for the less significant bits.
+ Note that when handling the more significant bits, the expected amortized
+ time 
+\begin_inset Formula $\OO\left(\log\log n\right)$
+\end_inset
+
+ remains independent of the input, as it only comes from randomization during
+ hashing.
 \end_layout
 
 \begin_layout Standard
