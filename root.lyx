@@ -4,11 +4,13 @@
 \begin_header
 \textclass elsarticle
 \begin_preamble
+\pdfoutput=1
+
 % specify here the journal
 \journal{Information Processing Letters}
 
 \usepackage{amsfonts} % \mathbb for naturals, etc.
-\usepackage{url}
+%\usepackage{url}
 \usepackage{hyperref}
 \end_preamble
 \options preprint
