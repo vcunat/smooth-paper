@@ -450,21 +450,21 @@ smooth
 \end_inset
 
  distribution families.
- We propose a conceptually simpler solution utilizing well-known results
+ We propose a conceptually simpler solution, utilizing well-known results
  from much better studied variant of the problem that assumes nothing about
  the input.
- As a side effect, we are able to extend the range of handled input distribution
-s for the most studied case needing expected 
+ As a side effect, we are able to extend the range of input distributions
+ handled in 
 \begin_inset Formula $\OO\left(\log\log n\right)$
 \end_inset
 
- time, and we provide better insight into why the related methods are faster
- on smooth inputs.
+ time, which are the most studied cases, and we provide better insight into
+ why the related methods are faster on smooth inputs.
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-~80 words currently, which seems a good length (suggested: <200)
+~~80 words currently, which seems a good length (suggested: <200)
 \end_layout
 
 \end_inset

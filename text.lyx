@@ -370,8 +370,9 @@ This model is convenient because it preserves distribution of the stored
 \begin_inset Formula $\mu$
 \end_inset
 
--insertions only.
- That is usually essential for complexity analyses in related structures.
+.
+ That is usually essential for simplifying complexity analyses in related
+ structures.
  Various random deletion models were thoroughly studied by Knuth
 \begin_inset space ~
 \end_inset
