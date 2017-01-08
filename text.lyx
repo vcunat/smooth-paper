@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass elsarticle
 \begin_preamble
 \usepackage{varioref} % more-clickable references to pages via \vpageref and \vpagerefrange
@@ -23,16 +25,16 @@ theorems-ams-extended
 \language_package default
 \inputencoding utf8
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 1
@@ -114,6 +116,10 @@ reference "sec:defs"
 \end_inset
 
 ):
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -132,6 +138,10 @@ smooth distributions
 \end_deeper
 \begin_layout Itemize
 previous work:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -163,6 +173,10 @@ distribution-less
 \end_deeper
 \begin_layout Itemize
 my approach:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -180,6 +194,10 @@ distribution-less
 
 \begin_layout Itemize
 general two-level scheme using the lemma;
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -348,8 +366,7 @@ This model is convenient because it preserves distribution of the stored
 \begin_inset space ~
 \end_inset
 
--- at any point of execution the set appears to be created by independent
- 
+– at any point of execution the set appears to be a sample taken from 
 \begin_inset Formula $\mu$
 \end_inset
 
