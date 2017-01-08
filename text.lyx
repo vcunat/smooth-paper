@@ -458,6 +458,24 @@ filename "def-smooth.tex"
 
 \end_layout
 
+\begin_layout Remark*
+This definition, as written, makes only sense for 
+\emph on
+continuous
+\emph default
+ distribution functions, yet any realistic models of computation can 
+\emph on
+not
+\emph default
+ assume handling arbitrary non-discrete values in constant space and time
+ per operation.
+ Therefore we assume implicit rounding when choosing a key from a distribution,
+ thus converting to the nearest value representable in a single machine
+ word.
+ It seems reasonable that the related research assumed something similar
+ without stating it explicitly.
+\end_layout
+
 \begin_layout Section
 Static analysis of bucketing 
 \begin_inset CommandInset label
