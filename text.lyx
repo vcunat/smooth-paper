@@ -856,7 +856,7 @@ Kaporis et
 \end_inset
 
 al.
- There are standard structures for the predecessor problem needing time
+ There are standard structures for the predecessor problem working in time
  
 \begin_inset Formula $\OO(\!\sqrt{\log n/\log\log n})$
 \end_inset
@@ -873,8 +873,12 @@ al.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 If we allowed slightly more space of 
-\begin_inset Formula $\OO\left(n^{1+1/o(\log n)}\right)\supset\OO\left(n^{1+\epsilon}\right)$
+\begin_inset Formula $\Omega\left(n^{1+1/\OO(\log w)}\right)$
 \end_inset
 
  words, we would immeditely get 
@@ -891,7 +895,7 @@ key "PatrasT06"
 \end_inset
 
 .
- That covers the cases studied in an unpublished work of Bellazougui et
+ TODO: perhaps not better than the unpublished work of Belazzougui et
 \begin_inset space ~
 \end_inset
 
@@ -906,7 +910,16 @@ key "BKS11"
 
 \end_inset
 
-, also in a simpler way.
+; note that they count space in 
+\emph on
+bits
+\emph default
+ instead of words.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
