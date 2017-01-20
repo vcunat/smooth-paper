@@ -1,9 +1,13 @@
 
-\section{Definitions \label{sec:defs}}
+\section{Introduction \label{sec:defs}}
 
-In this section we state the predecessor problem and the input model
-that we use to study it. In~Section~\ref{sec:smooth-bucket} we
-formalize and prove a key property of smooth distributions that seems
+The predecessor problem involves maintaining a set of linearly
+ordered keys and performing queries on that set. The basic variant allows insertions, deletions, and --- more complex to perform and extensively studied --- \emph{predecessor} query: find the largest contained key that is less than a given value. 
+
+This paper investigates the predecessor problem on inputs described by  a well studied class of ``smooth'' probability distributions. 
+In this section we formalize models of the input and computation employed
+and introduce the class of smooth distributions. In~Section~\ref{sec:smooth-bucket} we
+prove the key property of smooth distributions that seems to be
 implicitly used in all related work (in weaker forms) as the most
 important step to achieve the stated performance. In~Section~\ref{sec:main-results}
 we show how to utilize this property directly with well-known distribution-independent
@@ -11,12 +15,9 @@ structures for the predecessor problem to get better performance in
 a simpler way, essentially by converting to the case of polynomial-sized
 universe.
 
-The predecessor problem consists of maintaining a set of linearly
-ordered keys. The basic variant allows insertions, deletions, and
-\emph{predecessor} queries which find the greatest contained key that
-is less than a given value. We assume the usual word-RAM~\cite{HagerupT98}
+We assume the usual word-RAM~\cite{HagerupT98}
 as our computational model, and additionally we restrict keys to word-sized
-integers. That can be shown not to be a significant limitation, as
+integers. That can be shown not to be a~significant limitation, as
 many other key types can be converted to the integer case cheaply,
 for example standard floating-point \cite[sec. 2.1.3]{Goldberg91}
 and string keys \cite{AndersT01}.
@@ -24,7 +25,7 @@ and string keys \cite{AndersT01}.
 We study the behavior of the predecessor problem on specific input
 key distributions, which requires us to specify how we model the input:
 \begin{defn}[input model]
-Insertions take keys distributed according to a density~$\mu$ that
+Insertions take keys distributed according to a~density~$\mu$ that
 does not change during the whole life of the structure. Deletions
 remove uniformly from the set of \emph{contained} elements. All the
 operations are arbitrarily intermixed, and the keys are chosen independently
@@ -53,10 +54,11 @@ of an array.\footnote{We use $n$ to denote the current size of the stored set, f
 the custom in data structures.} This solution for bounded distributions was pointed out already by
 Andersson and Mattsson \cite[sec. 5.2]{AndersM93}.
 \end{rem*}
+The concept of a smooth probability density was introduced by Mehlhorn and 
 \input{def-smooth.tex}
 \begin{rem*}
-This definition, as written, makes only sense for \emph{continuous}
-distribution functions, yet any realistic models of computation can
+This definition, as written, makes only sense for \emph{continuous} probability
+distributions, yet any realistic models of computation can
 \emph{not} assume handling arbitrary non-discrete values in constant
 space and time per operation. Therefore we assume implicit rounding
 when inserting a key, thus converting to the nearest value representable
@@ -64,15 +66,16 @@ in a single machine word. It seems reasonable that the related research
 assumed something similar without stating it explicitly.
 \end{rem*}
 
-\section{Static analysis of bucketing \label{sec:smooth-bucket}}
-
+\section{Static analysis of bucketing}
+ \label{sec:smooth-bucket}
 In this section we show how smoothness implies that an arbitrary sufficiently
-short interval is expected to get only constant number of input keys.
+short interval is expected to get only a~constant number of input keys.
 \begin{lem*}
-\label{lem:smooth-bucket} Given $\alpha,\delta>0$ and a positive
-integer $n$, let us generate $n$ keys from a $\left(s^{\alpha},s^{1-\delta}\right)$-smooth
+\label{lem:smooth-bucket}
+Given $\alpha,\delta>0$ and a positive
+integer $n$, let us independently draw $n$ keys from a $\left(s^{\alpha},s^{1-\delta}\right)$-smooth
 distribution, and split the whole domain into at least $n^{\alpha/\delta}$
-equally long intervals. Then the expected number of keys in an interval
+equally long intervals. Then the expected number of keys in an~interval
 is $\OO(1)$.
 \end{lem*}
 \input{smooth-lemma.tex}
@@ -121,7 +124,7 @@ operations which can also be found in textbooks \cite[chapter 20]{intro2alg}.
 
 To cover the cases most studied in previous work, we focus on using
 linear space and work with $\left(s^{\alpha},s^{1-\delta}\right)$-smooth
-distributions. To use the~Lemma, we need to split away at least
+distributions. To use the~\Cref{lem:smooth-bucket}, we need to split away at least
 $(\alpha/\delta)\log n$ bits.\footnote{In case there are not that many bits in the word, we can ``split
 all of them'', meaning we basically use vEB trees directly while
 fitting into the stated complexity bounds.} If the values of parameters are unknown, we can split away more bits
@@ -143,8 +146,8 @@ significant bits is expected to store $\OO(1)$ keys. The resulting
 performance is essentially the same as that of~Kaporis et~al.~\cite{KMSTTZ06},
 except that unlike all previous work we achieve linear space without
 requiring $\alpha\le1$, and our approach is conceptually much simpler.
-\begin{thm*}[main result]
-There is a structure solving the predecessor problem in $\OO\left(\log\log n\right)$
+\begin{thm*}%[main result]
+There is a structure for solving the predecessor problem in $\OO\left(\log\log n\right)$
 expected time per operation and linear space on any $\left(s^{\alpha},s^{1-\delta}\right)$-smooth
 distribution for arbitrary $\alpha,\delta>0$. The distribution and
 parameters do not need to be known.
@@ -168,9 +171,12 @@ distributed. For the approach of our paper to work, it is enough (informally)
 that the information is only carried by a sufficiently short bit prefix
 of the keys.
 
-\paragraph{Acknowledgements}
+\section*{Acknowledgements}
 
-Most of results in this paper were included in the author's master
-thesis~\cite{Cunat10}. Many thanks belong to his supervisor Václav
-Koubek for helpful discussions during our research into this problem.
+Most of the results presented above %in this paper 
+were included in the author's master thesis~\cite{Cunat10}. The author wishes to dedicate this paper to the memory of %Many thanks belong to 
+his supervisor V\'aclav Koubek who passed away before this work was completed.
+%for helpful discussions during our research into this problem.
+
+
 
