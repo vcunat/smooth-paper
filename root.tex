@@ -1,5 +1,16 @@
 \RequirePackage{fixltx2e}
-\documentclass[twoside,english,preprint]{elsarticle}
+
+\documentclass[
+%%% one of
+submission
+%final
+%proceedings
+%%% if you compile a final version for the old OJS platform
+% , ojs
+%%% if all authors have the same affiliation
+% , nomarks
+]{dmtcs-episciences}
+
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \synctex=-1
@@ -37,14 +48,12 @@
 
 \makeatother
 
-\usepackage{babel}
+%\usepackage{babel}
   \providecommand{\definitionname}{Definition}
   \providecommand{\lemmaname}{Lemma}
   \providecommand{\remarkname}{Remark}
   \providecommand{\theoremname}{Theorem}
 \providecommand{\theoremname}{Theorem}
-
-\begin{document}
 
 
 % TODO: clean up this scavenged ../macros.tex
@@ -80,23 +89,26 @@
 
 
 
-\begin{frontmatter}{}
-
 \title{Predecessor problem on smooth distributions}
 
-\author[mff,cz.nic]{Vladim\'ir \v{C}un\'at\fnref{fn1}}
+\affiliation{
+  % one line per affiliation, no postal codes, grant numbers or similar
+  Faculty of Mathematics and Physics, Charles University in Prague, Czech Republic \\
+  CZ.NIC, z.\,s.\,p.\,o.
+}
 
-\ead{vcunat@gmail.com}
+\author{Vladim\'ir \v{C}un\'at\affiliationmark{1,2}%
+  \thanks{This research was supported by the Czech Science Foundation under grant GA14-10799S.}
+}
 
-\ead[url]{http://vcunat.matfyz.cz}
+\received{2017-01-24}
+%\revised{2002-07-19, 2014-02-05, 2015-09-09}
+%\accepted{2015-09-09}
 
-\fntext[fn1]{This research was supported by the Czech Science Foundation under
-grant GA14-10799S. }
+\begin{document}
 
-\address[mff]{Faculty of Mathematics and Physics, Charles University in Prague,
-Czech Republic }
-
-\address[cz.nic]{CZ.NIC, z.\,s.\,p.\,o.}
+%\publicationdetails{VOL}{2015}{ISS}{NUM}{SUBM}
+\maketitle
 
 \begin{abstract}
 We follow a research thread studying the predecessor problem on input
@@ -108,11 +120,9 @@ handled in $\OO\left(\log\log n\right)$ time, which are the most
 studied cases, and we provide better insight into why the related
 methods are faster on smooth inputs.
 \end{abstract}
-\begin{keyword}
-data structures \sep computational complexity \sep search tree
-\end{keyword}
 
-\end{frontmatter}{}
+\keywords{data structures, computational complexity, search tree}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -349,10 +359,8 @@ of the keys.
 Most of the results presented above were included in the author's master thesis~\cite{Cunat10}. The author wishes to dedicate this paper to the memory of his supervisor V\'aclav Koubek who passed away before this work was completed.
 
 
-\section*{References}
-
-\bibliographystyle{elsarticle-num}
-\addcontentsline{toc}{section}{\refname}\bibliography{refs}
+\bibliographystyle{plain} %TODO: better? DMTCS suggests abbrvnat, but the text is written with numerical references in mind
+\bibliography{refs}
 
 
 \end{document}
