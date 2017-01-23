@@ -185,7 +185,7 @@ The concept of a smooth probability density was originally introduced by Mehlhor
 \begin{defn}[\cite{KMSTTZ06}] \label{def:smooth}
 	Let $\mu$ be the density of a continuous random variable $X$ defined over an interval~$\interval a b$. Given two functions $f_1$ and $f_2$, $\mu$ is called \emphDef{$\emphDefMath{(f_1,f_2)}$-smooth} if
 	\begin{multline*}
-		\exists\beta \; \forall c_1,c_2,c_3 \quad a \le c_1 < c_2 < c_3 \le b \quad \forall s \in \natural \\
+		\exists\beta \; \forall c_1,c_2,c_3 \quad a \le c_1 < c_2 \le c_3 \le b \quad \forall s \in \natural \\
 		\ProbParam{X \sim \mu}{  X \in \interval{ c_2 - \frac{c_3-c_1}{f_1(s)} }{c_2} \; \middle| \; X \in \interval{c_1}{c_3}  }
 		\lespaces \frac{\beta f_2(s)}{s}.
 	\end{multline*}
@@ -201,6 +201,11 @@ space and time per operation. Therefore we assume implicit rounding
 when inserting a key, thus converting to the nearest value representable
 in a single machine word. It seems reasonable that the related research
 assumed something similar without stating it explicitly.
+\end{rem*}
+
+\begin{rem*}
+The original definition did not allow $c_2 = c_3$, but we consider that a "bug" and assume this amended definition.
+Without this change, $\Prob{X = b}$ could be arbitrarily high, which was clearly not intended to be allowed.
 \end{rem*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -223,23 +228,19 @@ is $\OO(1)$.
 
 The smoothness (Definition~\ref{def:smooth}) over the domain $\interval a b$ gives us:
 \begin{multline*}
-	\exists\beta \; \forall c_1,c_2,c_3 \quad a \le c_1 < c_2 < c_3 \le b \quad \forall s \in \natural \\
+	\exists\beta \; \forall c_1,c_2,c_3 \quad a \le c_1 < c_2 \le c_3 \le b \quad \forall s \in \natural \\
 		\Prob{  X \in \interval{ c_2 - \frac{c_3-c_1}{s^\alpha} }{c_2} \; \middle| \; X \in \interval{c_1}{c_3}  }
 		\lespaces \frac{\beta s^{1-\delta}}{s}  \eqspaces  \beta s^{-\delta}.
 \end{multline*}
 We choose to cover the whole domain $\interval{c_1}{c_3} := \interval a b$. The conditioning can be removed because it is always fulfilled.
 \[
-	\exists\beta \; \forall c_2 \quad a < c_2 < b \quad \forall s \in \natural \quad
+	\exists\beta \; \forall c_2 \quad a < c_2 \le b \quad \forall s \in \natural \quad
 		\Prob{  X \in \interval{ c_2 - \frac{b-a}{s^\alpha} }{c_2}  }
 		\lespaces \beta s^{-\delta}
 \]
 
 Now we consider splitting the domain into $k \ge n^{\alpha / \delta}$ equally long intervals.
-Let us choose $c_2$ as the endpoint of an arbitrary%
-	\footnote{There is a technical difficulty with the last interval, because Definition~\ref{def:smooth} (taken from referred papers) does not allow us to choose $c_2 = b$ for some unknown reason.
-	However, we can choose $c_2 := b-1$, so only the maximal value is not covered. Adding a single key to the last interval separately then does not affect the validity of the implied Lemma%~\ref{lem:smooth-bucket}
-	.
-	}
+Let us choose $c_2$ as the endpoint of an arbitrary
 interval $I$ and choose $s:= \lfloor n^{1 / \delta} \rfloor$, so
 $ s^\alpha \le n^{\alpha / \delta} \le k $ and thus the above probability covers at least the whole interval $I$. That gives us:
 \[	\Prob{X \in I} \lespaces \beta s^{-\delta}
