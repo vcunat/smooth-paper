@@ -1,0 +1,104 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{AndersM93}
+A.~Andersson, C.~Mattsson,
+  \href{http://link.springer.com/content/pdf/10.1007/3-540-56939-1\_58.pdf}{Dynamic
+  interpolation search in o(log log n) time}, in: Automata, Languages and
+  Programming, Springer, 1993, pp. 15--27.
+%\newline\urlprefix\url{http://link.springer.com/content/pdf/10.1007/3-540-56939-1\_58.pdf}
+
+\bibitem{AndersT01}
+A.~Andersson, M.~Thorup,
+  \href{http://dl.acm.org/citation.cfm?id=365411.365465}{Dynamic string
+  searching}, in: Proceedings of the Twelfth Annual {ACM}-{SIAM} Symposium on
+  Discrete Algorithms, {SODA} '01, Society for Industrial and Applied
+  Mathematics, 2001, pp. 307--308.
+%\newline\urlprefix\url{http://dl.acm.org/citation.cfm?id=365411.365465}
+
+\bibitem{intro2alg}
+T.~H. Cormen, C.~E. Leiserson, R.~L. Rivest, C.~Stein,
+  \href{https://mitpress.mit.edu/books/introduction-algorithms}{Introduction to
+  Algorithms}, 3rd Edition, The MIT Press, 2009.
+
+\bibitem{Cunat10}
+V.~Čunát, \href{https://is.cuni.cz/webapps/zzp/detail/78657/11784999/}{Data
+  structures for various distributions of data}, Master thesis, Charles University in Prague, 2010.
+%\newline\urlprefix\url{https://is.cuni.cz/webapps/zzp/detail/78657/11784999/}
+
+\bibitem{DemaineJP04}
+E.~D. Demaine, T.~Jones, M.~Pătraşcu,
+  \href{http://dl.acm.org/citation.cfm?id=982792.982870}{Interpolation search
+  for non-independent data}, in: Proceedings of the Fifteenth Annual
+  {ACM}-{SIAM} Symposium on Discrete Algorithms, {SODA} '04, Society for
+  Industrial and Applied Mathematics, 2004, pp. 529--530.
+%\newline\urlprefix\url{http://dl.acm.org/citation.cfm?id=982792.982870}
+
+
+\bibitem{Goldberg91}
+D.~Goldberg,
+  \href{http://doi.acm.org/10.1145/103162.103163}{What every computer scientist should know about floating-point
+  arithmetic}, ACM Comput. Surv. 23~(1) (1991) 5--48.
+%\newblock \href {http://dx.doi.org/http://doi.acm.org/10.1145/103162.103163}
+%  {\path{doi:http://doi.acm.org/10.1145/103162.103163}}.
+
+\bibitem{HagerupT98}
+T.~Hagerup,
+  \href{http://www.springerlink.com/content/w53xp778k50458n6/abstract/}{Sorting
+  and searching on the word {RAM}}, in: M.~Morvan, C.~Meinel, D.~Krob (Eds.),
+  {STACS} 98, Vol. 1373 of Lecture Notes in Computer Science, Springer Berlin /
+  Heidelberg, 1998, pp. 366--398.
+%\newline\urlprefix\url{http://www.springerlink.com/content/w53xp778k50458n6/abstract/}
+
+\bibitem{KMSTTZ06}
+A.~Kaporis, C.~Makris, S.~Sioutas, A.~Tsakalidis, K.~Tsichlas, C.~Zaroliagis,
+  \href{http://link.springer.com/chapter/10.1007/11786986_34}{Dynamic interpolation search revisited},
+  in: 33rd International Colloquium for Automata, Languages and Programming
+  (ICALP 2006), Vol. 4051 of Lecture Notes in Computer Science, Springer, 2006,
+  pp. 382--394.
+%\newline\urlprefix\url{http://icalp06.dsi.unive.it/}
+
+\bibitem{Knuth77}
+D.~E.~Knuth, \href{http://dx.doi.org/10.1109/TSE.1977.231160}{Deletions that preserve randomness},
+in: IEEE Transactions on Software Engineering, vol.3, no. 5, pp. 351-359, September 1977.
+%\newline\urlprefix\url{http://dx.doi.org/10.1109/TSE.1977.231160}
+
+\bibitem{MehlT93}
+K.~Mehlhorn, A.~Tsakalidis.
+\href{https://doi.org/10.1145/174130.174139}{Dynamic interpolation search.},
+in: J. ACM, vol. 40, no. 3, pp. 621–634, Jul. 1993.
+
+\bibitem{randomAlgs}
+  R.~Motwani, P.~Raghavan, \href{http://www.cambridge.org/us/academic/subjects/computer-science/algorithmics-complexity-computer-algebra-and-computational-g/randomized-algorithms}{Randomized algorithms},
+Cambridge University Press, New York, USA, 1995.
+
+\bibitem{global-rebuilding}
+M.~H. Overmars, {The Design of Dynamic Data Structures},
+in: Vol. 156 of Lecture Notes in Computer Science, Springer-Verlag, 1983, Ch.~5.
+
+
+%%% unused
+
+%\bibitem{PatrasT06}
+%M.~Pătraşcu, M.~Thorup,
+%  \href{http://doi.acm.org/10.1145/1132516.1132551}{Time-space trade-offs for
+%  predecessor search}, in: Proceedings of the thirty-eighth annual {ACM}
+%  symposium on Theory of computing, {STOC} '06, {ACM}, 2006, pp. 232--240.
+%\newblock \href {http://dx.doi.org/10.1145/1132516.1132551}
+%  {\path{doi:10.1145/1132516.1132551}}.
+%\newline\urlprefix\url{http://doi.acm.org/10.1145/1132516.1132551}
+
+%\bibitem{BKS11}
+%D.~Belazzougui, A.~C. Kaporis, P.~G. Spirakis,
+%  \href{http://arxiv.org/abs/1104.4353}{Random input helps searching
+%  predecessors}, CoRR abs/1104.4353.
+%\newline\urlprefix\url{http://arxiv.org/abs/1104.4353}
+
+
+
+
+\end{thebibliography}
