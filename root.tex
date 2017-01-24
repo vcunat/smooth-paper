@@ -181,8 +181,9 @@ of an array.\footnote{We use $n$ to denote the current size of the stored set, f
 the custom in data structures.} This solution for bounded distributions was pointed out already by
 Andersson and Mattsson \cite[sec. 5.2]{AndersM93}.
 \end{rem*}
-The concept of a smooth probability density was originally introduced by Mehlhorn, Tsakalidis \cite{MehlT93} and refined by Andersson, Mattsson \cite{AndersM93}.
-\begin{defn}[\cite{KMSTTZ06}] \label{def:smooth}
+The concept of a smooth probability density was originally introduced by Mehlhorn, Tsakalidis \cite{MehlT93} and refined by Andersson, Mattsson \cite{AndersM93}. We only amend the definition given in \cite{AndersM93,KMSTTZ06} by allowing $c_2 = c_3$.
+\begin{defn}%[\cite{KMSTTZ06}]
+ \label{def:smooth}
 	Let $\mu$ be the density of a continuous random variable $X$ defined over an interval~$\interval a b$. Given two functions $f_1$ and $f_2$, $\mu$ is called \emphDef{$\emphDefMath{(f_1,f_2)}$-smooth} if
 	\begin{multline*}
 		\exists\beta \; \forall c_1,c_2,c_3 \quad a \le c_1 < c_2 \le c_3 \le b \quad \forall s \in \natural \\
@@ -203,10 +204,10 @@ in a single machine word. It seems reasonable that the related research
 assumed something similar without stating it explicitly.
 \end{rem*}
 
-\begin{rem*}
-The original definition did not allow $c_2 = c_3$, but we consider that a "bug" and assume this amended definition.
-Without this change, $\Prob{X = b}$ could be arbitrarily high, which was clearly not intended to be allowed.
-\end{rem*}
+%\begin{rem*}
+%The original definition did not allow $c_2 = c_3$, but we consider that a "bug" and assume this amended definition.
+%Without this change, $\Prob{X = b}$ could be arbitrarily high, which was clearly not intended to be allowed.
+%\end{rem*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -223,9 +224,7 @@ distribution, and split the whole domain into at least $n^{\alpha/\delta}$
 equally long intervals. Then the expected number of keys in an~interval
 is $\OO(1)$.
 \end{lem*}
-
 \begin{proof}
-
 The smoothness (Definition~\ref{def:smooth}) over the domain $\interval a b$ gives us:
 \begin{multline*}
 	\exists\beta \; \forall c_1,c_2,c_3 \quad a \le c_1 < c_2 \le c_3 \le b \quad \forall s \in \natural \\
@@ -337,7 +336,7 @@ distribution for arbitrary $\alpha,\delta>0$. The distribution and
 parameters do not need to be known.
 \end{thm*}
 
-\newpage % an ugly page break otherwise
+%\newpage % an ugly page break otherwise
 
 \subsection{Concluding remarks}
 
