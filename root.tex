@@ -181,7 +181,11 @@ of an array.\footnote{We use $n$ to denote the current size of the stored set, f
 the custom in data structures.} This solution for bounded distributions was pointed out already by
 Andersson and Mattsson \cite[sec. 5.2]{AndersM93}.
 \end{rem*}
-The concept of a smooth probability density was originally introduced by Mehlhorn, Tsakalidis \cite{MehlT93} and refined by Andersson, Mattsson \cite{AndersM93}. We only amend the definition given in \cite{AndersM93,KMSTTZ06} by allowing $c_2 = c_3$.
+The concept of a smooth probability density was originally introduced by Mehlhorn, Tsakalidis \cite{MehlT93} and refined by Andersson, Mattsson \cite{AndersM93}. We only amend the definition given in \cite{AndersM93,KMSTTZ06} by allowing $c_2 = c_3$.%
+	\footnote{
+		Note that with the original definition where $c_1 < c_2 < c_3$ the probability $\Prob{X = b}$ could be arbitrarily high.
+		It seems clear that such possibility was not originally intended to be allowed in a "smooth" density.
+		}
 \begin{defn}%[\cite{KMSTTZ06}]
  \label{def:smooth}
 	Let $\mu$ be the density of a continuous random variable $X$ defined over an interval~$\interval a b$. Given two functions $f_1$ and $f_2$, $\mu$ is called \emphDef{$\emphDefMath{(f_1,f_2)}$-smooth} if
@@ -203,11 +207,6 @@ when inserting a key, thus converting to the nearest value representable
 in a single machine word. It seems reasonable that the related research
 assumed something similar without stating it explicitly.
 \end{rem*}
-
-%\begin{rem*}
-%The original definition did not allow $c_2 = c_3$, but we consider that a "bug" and assume this amended definition.
-%Without this change, $\Prob{X = b}$ could be arbitrarily high, which was clearly not intended to be allowed.
-%\end{rem*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
