@@ -134,7 +134,7 @@ ordered keys and performing queries on that set. The basic variant allows insert
 This paper investigates the predecessor problem on inputs described by  a~well studied class of ``smooth'' probability distributions.
 In the following section we formalize models that we use for input and computation,
 and we introduce the class of smooth distributions. In~Section~\ref{sec:smooth-bucket} we
-prove the key property of smooth distributions that seems to be
+prove a key property of smooth distributions that seems to be
 implicitly used in all related work (in weaker forms) as the most
 important step to achieve the stated performance. In~Section~\ref{sec:main-results}
 we show how to utilize this property directly with well-known distribution-independent
@@ -148,21 +148,20 @@ We assume the usual word-RAM~\cite{HagerupT98}
 as our computational model, and additionally we restrict keys to word-sized
 integers. That can be shown not to be a~significant limitation, as
 many other key types can be converted to the integer case cheaply,
-for example standard floating-point \cite[sec. 2.1.3]{Goldberg91}
-and string keys \cite{AndersT01}.
+for example standard floating-point numbers \cite[sec. 2.1.3]{Goldberg91}
+and strings \cite{AndersT01}.
 
-We study the behavior of the predecessor problem on specific input
-key distributions, which requires us to specify how we model the input:
+We study the behavior of the predecessor problem in cases where the input
+has certain specific properties, which requires us to specify how we model the input:
 \begin{defn}[input model]
 Insertions take keys distributed according to a~density~$\mu$ that
 does not change during the whole life of the structure. Deletions
 remove uniformly from the set of \emph{contained} elements. All the
-operations are arbitrarily intermixed, and the keys are chosen independently
-of each other.
+operations are arbitrarily intermixed and mutually independent.
 \end{defn}
 This model is convenient because it preserves distribution of the
-stored set~– at any point of execution the set appears to be a sample
-taken from $\mu$. That is usually essential for simplifying complexity
+stored set~– at any point of execution the set appears like a sample
+chosen anew according to $\mu$. That is usually essential for simplifying complexity
 analyses in related structures. Various random deletion models were
 thoroughly studied by Knuth~\cite{Knuth77}.
 
@@ -170,7 +169,7 @@ Most of related papers work with key distributions that can be described
 as \emph{$\left(s^{\alpha},s^{1-\delta}\right)$-smooth} for some
 constants $\alpha,\delta>0$. Typically it is assumed that the particular
 density of the distribution is not known, but $\alpha$ and $\delta$
-are fixed parameters.
+are fixed known parameters.
 \begin{rem*}
 If the distribution \emph{was} known and its inverse cumulative distribution
 function $F^{-1}$ was cheaply computable (or approximable), we could
@@ -183,7 +182,7 @@ of an array.\footnote{We use $n$ to denote the current size of the stored set, f
 the custom in data structures.} This solution for bounded distributions was pointed out already by
 Andersson and Mattsson \cite[sec. 5.2]{AndersM93}.
 \end{rem*}
-The concept of a smooth probability density was originally introduced by Mehlhorn, Tsakalidis \cite{MehlT93} and refined by Andersson, Mattsson \cite{AndersM93}. We only amend the definition given in \cite{AndersM93,KMSTTZ06} by allowing $c_2 = c_3$.%
+The concept of a smooth probability density was originally introduced by Mehlhorn, Tsakalidis \cite{MehlT93} and later generalized by Andersson, Mattsson \cite{AndersM93}. We only amend the definition given in \cite{AndersM93,KMSTTZ06} by allowing $c_2 = c_3$.%
 	\footnote{
 		Note that with the original definition where $c_1 < c_2 < c_3$ the probability $\Prob{X = b}$ could be arbitrarily high.
 		It seems clear that such possibility was not originally intended to be allowed in a "smooth" density.
@@ -198,7 +197,7 @@ The concept of a smooth probability density was originally introduced by Mehlhor
 	\end{multline*}
 \end{defn}
 
-There is quite a simple intuition behind this complicated condition. It implies that if we cut some interval $\interval{c_1}{c_3}$ into $f_1(s)$ subintervals and $\mu$-generate $s$ values from $\interval{c_1}{c_3}$, every subinterval is expected to get $\OO(f_2(s))$ elements.
+There is quite a simple intuition behind this complicated condition. It implies that if we cut some interval $\interval{c_1}{c_3}$ into $f_1(s)$ subintervals and generate $s$ values according to density $\mu$ restricted to $\interval{c_1}{c_3}$, every subinterval is expected to get $\OO(f_2(s))$ elements.
 
 \begin{rem*}
 This definition, as written, makes only sense for \emph{continuous} probability
@@ -206,7 +205,7 @@ distributions, yet any realistic models of computation can
 \emph{not} assume handling arbitrary non-discrete values in constant
 space and time per operation. Therefore we assume implicit rounding
 when inserting a key, thus converting to the nearest value representable
-in a single machine word. It seems reasonable that the related research
+in a single RAM word. It seems reasonable that the related research
 assumed something similar without stating it explicitly.
 \end{rem*}
 
@@ -221,7 +220,7 @@ short interval is expected to get only a~constant number of input keys.
 \label{lem:smooth-bucket}
 Given $\alpha,\delta>0$ and a positive
 integer $n$, let us independently draw $n$ keys from a $\left(s^{\alpha},s^{1-\delta}\right)$-smooth
-distribution, and split the whole domain into at least $n^{\alpha/\delta}$
+distribution, and split its whole domain into at least $n^{\alpha/\delta}$
 equally long intervals. Then the expected number of keys in an~interval
 is $\OO(1)$.
 \end{lem*}
@@ -257,9 +256,9 @@ $n \Prob{X \in I}$ is in $\OO(1)$.
 \end{proof}
 
 \begin{rem*}
-We showed that the number of keys in an interval is expected to be constant, but the tail of binomial distribution can be bounded even more tightly, e.\,g.~by Chernoff bounds~\cite[chapter~4.1]{randomAlgs}, to guarantee that high values are exponentially rare.
-We do not elaborate on a finer analysis, because we feel there is a more pressing problem that we do not solve in this paper~-- the unrealistic (unmotivated) character of the used input model where all keys are inserted \emph{independently} from a (partially) known distribution.
-We use it for our analysis to enable comparison with known structures, as we have only found one published structure that uses a different model~\cite{DemaineJP04} and moreover the bounds implied in that case seem relatively weak.
+We showed that the number of keys in an interval is expected to be constant, but the tail of that binomial distribution can be bounded even more tightly, e.\,g.~by Chernoff bounds~\cite[chapter~4.1]{randomAlgs}, to guarantee that high values are exponentially rare.
+We do not elaborate on a finer analysis, because we feel a more pressing problem that we do not solve in this paper~-- the unrealistic (unmotivated) character of the used input model where all keys are inserted \emph{independently} from a (partially) known distribution.
+We use those assumptions for our analysis to enable comparison with known structures, as we have only found one published structure that uses a different model~\cite{DemaineJP04} and moreover the bounds implied in that case seem relatively weak.
 \end{rem*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
