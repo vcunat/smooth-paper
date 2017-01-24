@@ -126,14 +126,14 @@ methods are faster on smooth inputs.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Introduction \label{sec:defs}}
+\section{Introduction}
 
 The predecessor problem involves maintaining a set of linearly
 ordered keys and performing queries on that set. The basic variant allows insertions, deletions, and -- more complex to perform -- \emph{predecessor} query: find the largest contained key that is less than a given value. 
 
-This paper investigates the predecessor problem on inputs described by  a~well studied class of ``smooth'' probability distributions. 
-In this section we formalize models of the input and computation
-and introduce the class of smooth distributions. In~Section~\ref{sec:smooth-bucket} we
+This paper investigates the predecessor problem on inputs described by  a~well studied class of ``smooth'' probability distributions.
+In the following section we formalize models that we use for input and computation,
+and we introduce the class of smooth distributions. In~Section~\ref{sec:smooth-bucket} we
 prove the key property of smooth distributions that seems to be
 implicitly used in all related work (in weaker forms) as the most
 important step to achieve the stated performance. In~Section~\ref{sec:main-results}
@@ -141,6 +141,8 @@ we show how to utilize this property directly with well-known distribution-indep
 structures for the predecessor problem to get better performance in
 a simpler way, essentially by converting to the case of polynomial-sized
 universe.
+
+\section{Definitions \label{sec:defs}}
 
 We assume the usual word-RAM~\cite{HagerupT98}
 as our computational model, and additionally we restrict keys to word-sized
