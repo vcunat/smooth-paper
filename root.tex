@@ -294,7 +294,7 @@ To keep the space linear\footnote{In word-RAM data structures, linear space mean
 of memory.}, some modifications to the original structure are required. The mappings
 can be represented by hash tables instead of simple arrays, and indirection
 can be used: the whole set is split into $\Theta(\log l)$-sized consecutive
-clusters in a fashion similar to B-trees, and the actual vEBT construction
+clusters in a fashion similar to B-tree nodes, and the actual vEBT construction
 is only applied to the whole clusters joined together by a doubly
 linked list. These changes make the complexity of insertions and deletions
 expected and amortized where the expectation is only over random bits.
@@ -305,9 +305,10 @@ operations which can also be found in textbooks \cite[chapter 20]{intro2alg}.
 
 \subsection{Modifying the vEBT decomposition}
 
-To cover the cases most studied in previous work, we focus on using
-linear space and work with $\left(s^{\alpha},s^{1-\delta}\right)$-smooth
-distributions. To use the \ref{lem:smooth-bucket}, we need to split away at least
+To cover the cases most studied in previous work, we focus on
+$\left(s^{\alpha},s^{1-\delta}\right)$-smooth distributions while using linear space.
+To satisfy assumptions of the \ref{lem:smooth-bucket}, our top-level decomposition
+needs to split away at least the most significant
 $(\alpha/\delta)\log n$ bits.\footnote{In case there are not that many bits in the word, we can ``split
 all of them'', meaning we basically use vEB trees directly while
 fitting into the stated complexity bounds.} If the values of parameters are unknown, we can split away more bits
@@ -358,7 +359,7 @@ of the keys.
 
 \section*{Acknowledgements}
 
-Most of the results presented above were included in the author's master thesis~\cite{Cunat10}. The author wishes to dedicate this paper to the memory of his supervisor V\'aclav Koubek who passed away before this work was completed.
+Most of the results presented above were included in the author's master thesis~\cite{Cunat10}. The author wishes to dedicate this paper to the memory of his supervisor V\'aclav Koubek, who passed away before this work was completed.
 
 
 \bibliographystyle{plain} %TODO: better? DMTCS suggests abbrvnat, but the text is written with numerical references in mind
